@@ -4,12 +4,14 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* --color-Linear gradient (active input border): hsl(249, 99%, 64%) to hsl(278, 94%, 30%) */
+  --breakpoint-xxs: 375px;
+  --breakpoint-xs: 525px;
   --color-Red-400: hsl(0, 100%, 66%);
   --color-White: hsl(0, 100%, 100%);
   --color-Gray-200: hsl(270, 3%, 87%);
   --color-Gray-400: hsl(212, 12%, 71%);
   --color-Purple-950: hsl(278, 68%, 11%);
+  --font-Space-Grotesk: 'Space Grotesk', sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -55,12 +57,12 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: var(--color-Purple-950);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: var(--color-Gray-200);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -123,4 +125,22 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+*{
+  box-sizing: border-box;
+  @apply font-Space-Grotesk;
+}
+
+main > section {
+  background-image: url('./assets/images/bg-main-mobile.png');
+}
+@media (min-width: 768px) {
+  main > section {
+    background-image: url('./assets/images/bg-main-desktop.png');
+  }
+}
+
+.input-wrapper:has(input:active), .input-wrapper:has(input:focus-visible), .input-wrapper:has(input:hover){
+  background-image: linear-gradient(46deg, hsl(249, 99%, 64%), hsl(278, 94%, 30%));
 }

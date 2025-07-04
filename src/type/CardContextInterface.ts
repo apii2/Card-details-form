@@ -1,0 +1,6 @@
+import type DataInterface from "./DataInterface";
+
+export default interface CardContextInterface {
+  cardInfo: DataInterface[],
+  setCardInfo: React.Dispatch<React.SetStateAction<DataInterface[]>>;
+}
