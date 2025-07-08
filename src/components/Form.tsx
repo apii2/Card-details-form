@@ -4,6 +4,7 @@ import { Button } from './ui/button';
 import { useContext, useState } from 'react';
 import { CardContext } from '@/context/CardContext';
 import type { ErrorInterface } from '@/type/ErrorInterface';
+import { validation, inputValue } from '@/methds/validation';
 
 export default function Form() {
 
@@ -14,55 +15,13 @@ export default function Form() {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
-    let errors:ErrorInterface = {};
-    
-    cardInfo.forEach(dat=>{
-      let value = (formData.get(dat.name)??'').toString().trim();
-
-      if(dat.children?.length){
-        dat.children?.forEach(child=>{
-          if(!formData.get(child.name)){
-            errors[child.name] = "Can't be blank"
-          }  
-          if(errors[child.name]){
-            errors[dat.name] = "Can't be blank"
-          }
-        })
-      }
-
-      if(!dat.children?.length){
-        if(!value){
-          errors[dat.name] = "Can't be blank"
-        } 
-        else if(!dat.pattern?.test(value)){
-          errors[dat.name] = dat.name === 'full_name' ? `Wrong format, alphabets only` : `Wrong format, numbers only`;
-        }
-      } 
-    })
-    
+    let errors = validation(formData, cardInfo);
     setErrorList(errors);
   }
 
   function handleInputChange(e:React.ChangeEvent<HTMLInputElement>){
     const { name, value } = e.currentTarget;
-
-    setCardInfo(prev=>(
-      prev.map(dat=>{
-        if(dat.name === 'expiry'){
-          dat.children?.map(child => {
-            console.log(child.name === name);
-            return (child.name === name) ? {
-              ...child,
-              value: value
-            } : child
-          })
-        }
-        return (dat.name === name) ? {
-          ...dat,
-          value : value
-        }: dat
-      })
-    ))
+    inputValue(setCardInfo, name, value);
   }
 
   return (
