@@ -4,6 +4,9 @@ export default interface DataInterface {
   label: string,
   type: string,
   placeholder?: string,
-  value: string,
-  pattern?: RegExp
+  value?: string,
+  pattern?: RegExp,
+  min?: number,
+  max?: number,
+  children?: Omit<DataInterface, 'id'|'label'|'children'|'type'>[]
 }

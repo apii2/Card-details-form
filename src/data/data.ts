@@ -14,7 +14,7 @@ export const data:DataInterface[] = [
     id: 2,
     name: 'card_no',
     label: 'Card number',
-    type: 'number',
+    type: 'text',
     placeholder: 'e.g. 1234 5678 9123 0000',
     value: '',
     pattern: /^(?:\d{4}\s){3}\d{4}$/
@@ -24,13 +24,28 @@ export const data:DataInterface[] = [
     name: 'expiry',
     label: 'Exp. date (mm/yy)',
     type: 'number',
-    value: ''
+    children: [
+      {
+        name: 'expiry_month',
+        placeholder: 'MM',
+        value: '',
+        min: 1,
+        max: 12
+      },
+      {
+        name: 'expiry_year',
+        placeholder: 'YY',
+        value: '',
+        min: 25,
+        max: 99
+      }
+    ]
   },
   {
     id: 4,
     name: 'code',
     label: 'cvc',
-    type: 'number',
+    type: 'text',
     placeholder: 'e.g. 123',
     value: '',
     pattern: /^\d{3}$/

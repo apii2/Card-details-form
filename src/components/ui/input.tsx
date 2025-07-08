@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 
 function Input({ className, type, placeholder, ...props }: React.ComponentProps<"input">) {
   return (
-    <div className="input-wrapper w-full rounded-md p-px bg-Gray-200">
+    <div className="input-wrapper w-full rounded-md p-px bg-Gray-200 has-[input.error]:bg-Red-400">
       <input
         type={type}
         data-slot="input"
