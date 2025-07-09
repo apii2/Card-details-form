@@ -132,11 +132,11 @@
   @apply font-Space-Grotesk;
 }
 
-main > section {
+main > section.left-section {
   background-image: url('./assets/images/bg-main-mobile.png');
 }
 @media (min-width: 768px) {
-  main > section {
+  main > section.left-section {
     background-image: url('./assets/images/bg-main-desktop.png');
   }
 }

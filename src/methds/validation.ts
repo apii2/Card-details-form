@@ -1,5 +1,5 @@
 import type DataInterface from "@/type/DataInterface";
-import type { ErrorInterface } from "@/type/ErrorInterface";
+import type { ErrorInterface } from "@/type/StringObjectInterface";
 import type React from "react";
 
 export function validation(formData:FormData, cardInfo:DataInterface[]){
@@ -18,8 +18,7 @@ export function validation(formData:FormData, cardInfo:DataInterface[]){
         }
       })
     }
-
-    if(!dat.children?.length){
+    else{
       if(!value){
         errors[dat.name] = "Can't be blank"
       } 

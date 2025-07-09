@@ -36,7 +36,7 @@ export const data:DataInterface[] = [
         name: 'expiry_year',
         placeholder: 'YY',
         value: '',
-        min: 25,
+        min: new Date().getFullYear() % 100,
         max: 99
       }
     ]

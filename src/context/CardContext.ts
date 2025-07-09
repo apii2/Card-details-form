@@ -5,4 +5,5 @@ import type CardContextInterface from "@/type/CardContextInterface";
 export const CardContext = createContext<CardContextInterface>({
   cardInfo: data,
   setCardInfo: () => {},
+  setIsFormClear: () => {}
 });

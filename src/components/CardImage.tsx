@@ -3,16 +3,16 @@ import CardBack from '../assets/images/bg-card-back.png';
 import CardLogo from '../assets/images/card-logo.svg';
 import { useContext, useState, useEffect } from 'react';
 import { CardContext } from '@/context/CardContext';
-import type { ErrorInterface } from '@/type/ErrorInterface';
+import type { StringObjectInterface } from '@/type/StringObjectInterface';
 
 export default function CardImage() {
   
-  const {cardInfo, setCardInfo} = useContext(CardContext);
+  const {cardInfo} = useContext(CardContext);
 
-  const [valueList, setValueList] = useState<ErrorInterface>({})
+  const [valueList, setValueList] = useState<StringObjectInterface>({})
 
   useEffect(() => {
-    const values: ErrorInterface = {};
+    const values: StringObjectInterface = {};
 
     cardInfo.forEach(dat => {
       if (!dat.children?.length) {
@@ -28,14 +28,14 @@ export default function CardImage() {
   }, [cardInfo]);
 
   return (
-    <section className='bg-fixed bg-no-repeat bg-cover px-[4%] md:px-0 
+    <section className='left-section bg-fixed bg-no-repeat bg-cover px-[4%] md:px-0 
       flex flex-col-reverse md:flex-col md:justify-center md:items-end md:gap-6'>
 
       <div className="relative w-70 xxs:max-[425px]:w-80 xxs:w-90 xs:w-full md:w-75 lg:w-88 xl:w-95 
-        -mb-[22%] xs:-mb-[15%] md:mb-0 md:-me-[16%] lg:-me-[30%]">
+        -mb-[22%] xs:-mb-[15%] md:mb-0 md:-me-[16%] lg:-me-[30%] z-20">
         <img src={CardFront} alt="Card front view" className='shadow-2xl' />
         <img src={CardLogo} alt="Card logo icon" className='absolute top-6 left-6 w-[21%]' />
-          <p className='absolute bottom-0 -translate-y-9.5 left-6 text-White text-xl tracking-widest'>{valueList['card_no'] || '0000 0000 0000 0000'}</p>
+          <p className='absolute bottom-0 -translate-y-12 left-6 text-White text-lg sm:text-xl tracking-widest'>{valueList['card_no'] || '0000 0000 0000 0000'}</p>
           <p className='absolute bottom-0 -translate-y-3.5 left-6 text-xs text-White uppercase tracking-widest'>{valueList['full_name'] || 'Jane Appleseed'}</p>
           <p className='absolute bottom-0 -translate-y-3.5 right-6 text-xs text-White uppercase tracking-widest'>{valueList['expiry_month'] || '00'}/{valueList['expiry_year'] || '00'}</p>
       </div>

@@ -3,13 +3,13 @@ import { Label } from './ui/label';
 import { Button } from './ui/button';
 import { useContext, useState } from 'react';
 import { CardContext } from '@/context/CardContext';
-import type { ErrorInterface } from '@/type/ErrorInterface';
+import type { StringObjectInterface } from '@/type/StringObjectInterface';
 import { validation, inputValue } from '@/methds/validation';
 
 export default function Form() {
 
-  const {cardInfo, setCardInfo} = useContext(CardContext);
-  const [errorList, setErrorList] = useState<ErrorInterface>({});
+  const {cardInfo, setCardInfo, setIsFormClear} = useContext(CardContext);
+  const [errorList, setErrorList] = useState<StringObjectInterface>({});
 
   function handleSubmit(e:React.FormEvent<HTMLFormElement>){
     e.preventDefault();
@@ -17,6 +17,10 @@ export default function Form() {
 
     let errors = validation(formData, cardInfo);
     setErrorList(errors);
+
+    if(!Object.keys(errors).length){
+      setIsFormClear(true);
+    }
   }
 
   function handleInputChange(e:React.ChangeEvent<HTMLInputElement>){
@@ -25,7 +29,7 @@ export default function Form() {
   }
 
   return (
-    <div className='flex items-end md:items-center justify-center px-6 sm:px-7 lg:px-20 xl:px-0'>
+    <section className='flex items-end md:items-center justify-center px-6 sm:px-7 lg:px-20 xl:px-0'>
       <form onSubmit={handleSubmit} className='space-y-5 pb-20 md:pb-0'>
         {cardInfo.map(dat=>(
           dat.children?.length ? 
@@ -50,6 +54,6 @@ export default function Form() {
           Confirm
         </Button>
       </form>
-    </div>
+    </section>
   )
 }
