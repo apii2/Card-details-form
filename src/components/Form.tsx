@@ -30,7 +30,7 @@ export default function Form() {
 
   return (
     <section className='flex items-end md:items-center justify-center px-6 sm:px-7 lg:px-20 xl:px-0'>
-      <form onSubmit={handleSubmit} className='space-y-5 pb-20 md:pb-0'>
+      <form onSubmit={handleSubmit} className='space-y-5 pb-16 sm:pb-4 md:pb-0'>
         {cardInfo.map(dat=>(
           dat.children?.length ? 
             (<Label key={dat.id} className='w-1/2 inline-flex pe-2'>
