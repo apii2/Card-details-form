@@ -1,6 +1,6 @@
-import CardFront from '../assets/images/bg-card-front.png';
-import CardBack from '../assets/images/bg-card-back.png';
-import CardLogo from '../assets/images/card-logo.svg';
+import CardFront from '../../public/images/bg-card-front.png';
+import CardBack from '../../public/images/bg-card-back.png';
+import CardLogo from '../../public/images/card-logo.svg';
 import { useContext, useState, useEffect } from 'react';
 import { CardContext } from '@/context/CardContext';
 import type { StringObjectInterface } from '@/type/StringObjectInterface';

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import CompleteIcon from '../assets/images/icon-complete.svg';
+import CompleteIcon from '../../public/images/icon-complete.svg';
 import { Button } from './ui/button';
 import { CardContext } from '@/context/CardContext';
 

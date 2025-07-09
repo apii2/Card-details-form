@@ -133,11 +133,11 @@
 }
 
 main > section.left-section {
-  background-image: url('./assets/images/bg-main-mobile.png');
+  background-image: url('./images/bg-main-mobile.png');
 }
 @media (min-width: 768px) {
   main > section.left-section {
-    background-image: url('./assets/images/bg-main-desktop.png');
+    background-image: url('./images/bg-main-desktop.png');
   }
 }
 
