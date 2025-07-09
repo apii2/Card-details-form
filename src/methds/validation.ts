@@ -1,9 +1,9 @@
 import type DataInterface from "@/type/DataInterface";
-import type { ErrorInterface } from "@/type/StringObjectInterface";
+import type { StringObjectInterface } from "@/type/StringObjectInterface";
 import type React from "react";
 
 export function validation(formData:FormData, cardInfo:DataInterface[]){
-  let errors:ErrorInterface = {};
+  let errors:StringObjectInterface = {};
     
   cardInfo.forEach(dat=>{
     let value = (formData.get(dat.name)??'').toString().trim();
